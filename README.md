@@ -73,70 +73,17 @@
 
 ---
 
-## 它怎么知道有新解锁：两种方式
-
-**1. 看存档（默认，不需要任何改动）**
-
-程序每 2 秒看一眼存档文件，发现变了就刷新。
-缺点是游戏只在「离开回忆时」等时机写存档，所以提示会稍微晚一点。
-
-**2. 书页钩子（可选，推荐）**
-
-给游戏的 `Assembly-CSharp.dll` 打一个小补丁，让它在「书页浮现 / 全章盖戳 / 暴风雨演出结束」
-这**三个时刻立刻写一次存档**，于是提示能当场弹出来。
-
-三个站点：
-
-```
-书页浮现        Book/<RevealNewPages>c__AnonStorey0::<>m__1()
-全章盖戳        Book/<RevealCompleteChapter>c__AnonStorey2::<>m__0()
-暴风雨演出结束   ShipEnder::<Start>m__7()
-```
-
-装它之前**先退出游戏**：
-
-```bash
-# Windows（在程序目录里）
-ObraDinnInstructor.exe hook            # 安装（会自动备份原 DLL）
-ObraDinnInstructor.exe hook --report   # 看状态
-ObraDinnInstructor.exe hook --restore  # 还原
-
-# macOS
-/Applications/ObraDinnInstructor.app/Contents/MacOS/ObraDinnInstructor hook
-```
-
-- 原 DLL 备份在状态目录的 `hook-backup/` 里，随时能还原
-- **游戏更新过要重装一次**（更新会把 DLL 换回去）
-- 不装也完全可以用，只是提示晚一点
-
----
-
 ## 常见问题
 
 **Q：没有声音？**
 Windows 用系统 `winsound` / `afplay`（macOS）播放 `info.mp3`。虚拟机里可能报
 `AudioQueueStart failed`，程序照常工作，只是不响。可以用 `--sound 路径` 换一个音频文件。
 
-**Q：提示太早 / 太晚？**
-- 太晚 ⇒ 去装书页钩子（上面第 2 种方式）
-- 太早 ⇒ 那是钩子打在旧位置了，`hook --restore` 之后重装
-
 **Q：它会不会剧透？**
-不会。页面只显示**你已经解锁**的提示；没解锁的内容根本不会发给页面
-（页面只拿到已解锁的那部分数据）。
+不会。页面只显示**你已经解锁**的提示；没解锁的内容根本不会发给页面。
 
 **Q：杀毒软件报警？**
-因为没买签名证书，有些杀软会对「PyInstaller 打包的 exe」报警。
-不认识它就别运行；想自己确认，可以直接看源码或照下面自己构建。
-
-**Q：怎么换档位 / 换端口？**
-
-```bash
-ObraDinnInstructor.exe --slot P2 --port 8800 --interval 1
-ObraDinnInstructor.exe --no-bar        # 不要悬浮小条
-ObraDinnInstructor.exe --tab           # 用普通标签页打开
-ObraDinnInstructor.exe check           # 命令行看当前满足哪些提示
-```
+因为没买签名证书，有些杀软会对打包出来的 exe 报警。不认识它就别运行。
 
 **Q：数据都在哪？**
 
@@ -150,48 +97,6 @@ ObraDinnInstructor.exe check           # 命令行看当前满足哪些提示
 
 ---
 
-## 自己构建
-
-需要 **Python 3.12** 和 PyInstaller：
-
-```bash
-pip install pyinstaller
-python -m PyInstaller --noconfirm ObraDinnInstructor.spec
-```
-
-- Windows：`powershell -ExecutionPolicy Bypass -File packaging\build-windows.ps1`
-- macOS：`bash packaging/build-macos.sh`（脚本里含 `.icns` 生成、`.app` 打包与 ad-hoc 重签名）
-
-「书页钩子」用的 `langtool` 是 .NET 8 写的，可以在 Windows 上交叉发布：
-
-```powershell
-dotnet publish hardcore/langtool/LangTool.csproj -c Release -r win-x64 `
-  --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true `
-  -p:TrimMode=partial -p:EnableCompressionInSingleFile=true -o hardcore/langtool/pub-trim
-
-# macOS（Intel）：把 -r win-x64 换成 -r osx-x64，输出到 pub-osx-x64
-```
-
----
-
-## 目录说明
-
-```
-run_instructor.py         入口（打包后的 exe / .app 里跑的就是它）
-instructor/               程序本体：页面、判据、监视、通知、钩子
-  descriptions.txt        全部提示文案（**含剧透**，就是程序显示的那些内容）
-  fonts/                  裁好的字体子集（思源宋体 / IM Fell / Caveat / 851）
-parse_assets.py           从 txtAssetDump 读游戏数据
-make_envelope_save.py     存档加解密（只读用得到）
-tea_decrypt.py            XXTEA 实现
-txtAssetDump/             从游戏资源里导出的数据表
-hardcore/langtool/        给「书页钩子」用的小工具（Mono.Cecil 改 DLL），含源码与预编译
-docs/                     截图
-packaging/                打包脚本
-```
-
----
-
 ## 致谢与版权
 
 - 字体：**思源宋体**（Source Han Serif，SIL OFL 1.1）、**IM FELL English**、
@@ -199,7 +104,7 @@ packaging/                打包脚本
 - 《Return of the Obra Dinn》(c) Lucas Pope / 3909 LLC。
   本工具与作者无关；`txtAssetDump/` 与 `descriptions.txt` 里含有游戏数据的摘录，
   仅为让工具正常工作
-- 本工具**只读**游戏存档；「书页钩子」会改写游戏 DLL，但会先备份、随时可还原
+- 本工具**只读**游戏存档，不改动存档文件
 
 ## 许可
 

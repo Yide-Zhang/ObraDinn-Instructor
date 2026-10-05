@@ -1,0 +1,3151 @@
+{
+  "fate_base_ids": [
+    "unknown",
+    "arrowed-killer",
+    "gunned-killer",
+    "cannoned-killer",
+    "knifed-killer",
+    "sworded-killer",
+    "clubbed-killer",
+    "axed-killer",
+    "speared-killer",
+    "dismembered-killer",
+    "decapitated-killer",
+    "drowned-killer",
+    "eaten-killer",
+    "strangled-killer",
+    "spiked-beast",
+    "clawed-beast",
+    "winged-beast",
+    "tailed-beast",
+    "hooved-beast",
+    "crushed-cargo",
+    "crushed-beast",
+    "crushed-cannon",
+    "crushed-rigging",
+    "crushed-stones",
+    "fell-stairs",
+    "fell-rigging",
+    "fell-overboard",
+    "expired-age",
+    "expired-sick",
+    "exploded",
+    "electrocuted",
+    "poisoned",
+    "burned",
+    "froze",
+    "suicide-gun",
+    "suicide-knife",
+    "suicide-spear",
+    "suicide-noose",
+    "alive-uk",
+    "alive-eastindies",
+    "alive-westindies",
+    "alive-middleeast",
+    "alive-europe",
+    "alive-africa",
+    "alive-island",
+    "alive-canary",
+    "alive-verde",
+    "alive-azores"
+  ],
+  "fate_ent_ids": [
+    "unknown",
+    "enemy",
+    "beast",
+    "?officer",
+    "captain",
+    "mate1",
+    "mate2",
+    "mate3",
+    "mate4",
+    "bosun",
+    "bosunmate",
+    "surgeon",
+    "surgeonmate",
+    "carp",
+    "carpmate",
+    "cook",
+    "butcher",
+    "gunner",
+    "gunnermate",
+    "purser",
+    "sea9",
+    "pass5",
+    "?pass",
+    "pass1",
+    "pass2",
+    "pass3",
+    "pass4",
+    "pass6",
+    "pass7",
+    "pass8",
+    "pass9",
+    "?stew",
+    "stewship",
+    "stewcap",
+    "stewm1",
+    "stewm2",
+    "stewm3",
+    "stewm4",
+    "?mid",
+    "mid1",
+    "mid2",
+    "mid3",
+    "?top",
+    "top5",
+    "top6",
+    "top1",
+    "top4",
+    "top7",
+    "top8",
+    "top9",
+    "top3",
+    "topa",
+    "top2",
+    "?sea",
+    "sea1",
+    "sea5",
+    "sea2",
+    "sea3",
+    "sea6",
+    "sea4",
+    "sea7",
+    "sea8",
+    "seac",
+    "seaa",
+    "seab",
+    "sead",
+    "seae",
+    "seaf",
+    "seag"
+  ],
+  "crew": [
+    {
+      "id": "captain",
+      "job": "captain",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?officer",
+      "fateIds": [
+        "suicide-gun"
+      ],
+      "clue": [
+        "mate1"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "name-dialog",
+        "relate-dialog"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "merit_duties"
+      ],
+      "pay": "120",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "mate1",
+      "job": "mate1",
+      "gender_col": "",
+      "birthplace": "#crew_origin_scotland",
+      "category": "?officer",
+      "fateIds": [
+        "gunned-killer:captain"
+      ],
+      "clue": [
+        "|",
+        "captain",
+        "bosun"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "relate-dialog",
+        "relate-manifest",
+        "origin-accent"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "crime_mutiny"
+      ],
+      "pay": "90",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "mate2",
+      "job": "mate2",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?officer",
+      "fateIds": [
+        "gunned-killer:pass8"
+      ],
+      "clue": [
+        "|",
+        "pass2",
+        "stewm2"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "name-dialog"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "crime_mutiny",
+        "crime_theft"
+      ],
+      "pay": "80",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "mate3",
+      "job": "mate3",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?officer",
+      "fateIds": [
+        "speared-killer:beast",
+        "spiked-beast"
+      ],
+      "clue": [
+        "pass1"
+      ],
+      "difficulty": "",
+      "hint": [
+        "name-dialog"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "merit_valor",
+        "merit_duties"
+      ],
+      "pay": "70",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "mate4",
+      "job": "mate4",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?officer",
+      "fateIds": [
+        "clubbed-killer:seab"
+      ],
+      "clue": [
+        "mate2"
+      ],
+      "difficulty": "",
+      "hint": [
+        "role-room"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "merit_valor"
+      ],
+      "pay": "70",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "bosun",
+      "job": "bosun",
+      "gender_col": "",
+      "birthplace": "#crew_origin_austria",
+      "category": "?officer",
+      "fateIds": [
+        "dismembered-killer:beast"
+      ],
+      "clue": [
+        "bosun"
+      ],
+      "difficulty": "",
+      "hint": [
+        "relate-dialog",
+        "origin-accent",
+        "role-scene"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "merit_duties"
+      ],
+      "pay": "60",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "bosunmate",
+      "job": "bosunmate",
+      "gender_col": "",
+      "birthplace": "#crew_origin_france",
+      "category": "?officer",
+      "fateIds": [
+        "dismembered-killer:beast",
+        "crushed-beast",
+        "drowned-killer:beast",
+        "fell-overboard",
+        "eaten-killer:beast"
+      ],
+      "clue": [
+        "|",
+        "pass8",
+        "top9"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "role-scene",
+        "relate-dialog",
+        "relate-scene"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "merit_duties"
+      ],
+      "pay": "40",
+      "insuranceEstateKnown": false,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": "estate-unknown"
+    },
+    {
+      "id": "surgeon",
+      "job": "surgeon",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?officer",
+      "fateIds": [
+        "alive-africa"
+      ],
+      "clue": [
+        "sea4"
+      ],
+      "difficulty": "",
+      "hint": [
+        "role-scene",
+        "role-rooom"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "demerit_abandon"
+      ],
+      "pay": "60",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "surgeonmate",
+      "job": "surgeonmate",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?officer",
+      "fateIds": [
+        "decapitated-killer:beast",
+        "clawed-beast",
+        "strangled-killer:beast"
+      ],
+      "clue": [
+        "sea4"
+      ],
+      "difficulty": "",
+      "hint": [
+        "role-scene",
+        "role-room"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [
+        "merit_valor"
+      ],
+      "pay": "40",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "carp",
+      "job": "carp",
+      "gender_col": "",
+      "birthplace": "#crew_origin_america",
+      "category": "?officer",
+      "fateIds": [
+        "speared-killer:beast",
+        "spiked-beast",
+        "clawed-beast"
+      ],
+      "clue": [
+        "&",
+        "sea8",
+        "carpmate"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "relate-dialog",
+        "role-room",
+        "origin-accent"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "merit_valor"
+      ],
+      "pay": "50",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "carpmate",
+      "job": "carpmate",
+      "gender_col": "",
+      "birthplace": "#crew_origin_america",
+      "category": "?officer",
+      "fateIds": [
+        "speared-killer:beast",
+        "spiked-beast"
+      ],
+      "clue": [
+        "&",
+        "sea8",
+        "carpmate"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "relate-dialog",
+        "role-room",
+        "origin-accent"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [],
+      "pay": "30",
+      "insuranceEstateKnown": false,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": "estate-unknown"
+    },
+    {
+      "id": "cook",
+      "job": "cook",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?officer",
+      "fateIds": [
+        "clubbed-killer:beast",
+        "tailed-beast",
+        "crushed-beast"
+      ],
+      "clue": [
+        "cook"
+      ],
+      "difficulty": "",
+      "hint": [
+        "role-appearance",
+        "role-dialog"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [],
+      "pay": "40",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "butcher",
+      "job": "butcher",
+      "gender_col": "",
+      "birthplace": "#crew_origin_ireland",
+      "category": "?officer",
+      "fateIds": [
+        "speared-killer:beast",
+        "spiked-beast"
+      ],
+      "clue": [
+        "cow"
+      ],
+      "difficulty": "",
+      "hint": [
+        "role-scene"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [
+        "merit_duties"
+      ],
+      "pay": "30",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "gunner",
+      "job": "gunner",
+      "gender_col": "",
+      "birthplace": "#crew_origin_austria",
+      "category": "?officer",
+      "fateIds": [
+        "cannoned-killer:beast",
+        "cannoned-killer:sea7",
+        "exploded"
+      ],
+      "clue": [
+        "pass9"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "role-scene",
+        "name-dialog"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "merit_duties"
+      ],
+      "pay": "60",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "gunnermate",
+      "job": "gunnermate",
+      "gender_col": "",
+      "birthplace": "#crew_origin_poland",
+      "category": "?officer",
+      "fateIds": [
+        "gunned-killer:mate4"
+      ],
+      "clue": [
+        "&",
+        "pass9",
+        "stewship"
+      ],
+      "difficulty": "",
+      "hint": [
+        "role-scene",
+        "relate-scene",
+        "origin-accent"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "crime_mutiny"
+      ],
+      "pay": "50",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "purser",
+      "job": "purser",
+      "gender_col": "",
+      "birthplace": "#crew_origin_scotland",
+      "category": "?officer",
+      "fateIds": [
+        "drowned-killer:beast",
+        "fell-overboard",
+        "eaten-killer:beast"
+      ],
+      "clue": [
+        "stewship"
+      ],
+      "difficulty": "",
+      "hint": [
+        "room"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "demerit_abandon"
+      ],
+      "pay": "60",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "sea9",
+      "job": "helm",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?officer",
+      "fateIds": [
+        "dismembered-killer:beast",
+        "crushed-beast",
+        "drowned-killer:beast",
+        "fell-overboard",
+        "eaten-killer:beast"
+      ],
+      "clue": [
+        "-"
+      ],
+      "difficulty": "",
+      "hint": [
+        "role-sketch"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [],
+      "pay": "30",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "pass5",
+      "job": "artist",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?officer",
+      "fateIds": [
+        "crushed-beast",
+        "strangled-killer:beast"
+      ],
+      "clue": [
+        "-"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "name-sketch"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [],
+      "pay": "50",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "pass1",
+      "job": "pass",
+      "gender_col": "F",
+      "birthplace": "#crew_origin_scotland",
+      "category": "?pass",
+      "fateIds": [
+        "crushed-beast",
+        "crushed-rigging",
+        "clubbed-killer:beast"
+      ],
+      "clue": [
+        "|",
+        "captain",
+        "pass1"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "name-dialog",
+        "relate-dialog"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [],
+      "pay": "0",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "pass2",
+      "job": "pass",
+      "gender_col": "",
+      "birthplace": "#crew_origin_italy",
+      "category": "?pass",
+      "fateIds": [
+        "knifed-killer:mate2"
+      ],
+      "clue": [
+        "pass2"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "name-dialog",
+        "origin-accent"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [],
+      "pay": "0",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "pass3",
+      "job": "pass",
+      "gender_col": "F",
+      "birthplace": "#crew_origin_england",
+      "category": "?pass",
+      "fateIds": [
+        "alive-africa"
+      ],
+      "clue": [
+        "pass1"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "name-accessory",
+        "relate-scene"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [],
+      "pay": "0",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "pass4",
+      "job": "pass",
+      "gender_col": "F",
+      "birthplace": "#crew_origin_england",
+      "category": "?pass",
+      "fateIds": [
+        "alive-africa"
+      ],
+      "clue": [
+        "pass1"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "relate-scene",
+        "elimination"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [],
+      "pay": "0",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "pass6",
+      "job": "pass",
+      "gender_col": "F",
+      "birthplace": "#crew_origin_formosa",
+      "category": "?pass",
+      "fateIds": [
+        "strangled-killer:beast",
+        "clawed-beast"
+      ],
+      "clue": [
+        "|",
+        "pass9",
+        "pass7"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "origin-appearance",
+        "origin-language",
+        "name-dialog",
+        "relate-scene"
+      ],
+      "sketch": "sketch_formosans",
+      "tally": [],
+      "pay": "0",
+      "insuranceEstateKnown": false,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": "estate-unknown"
+    },
+    {
+      "id": "pass7",
+      "job": "pass",
+      "gender_col": "",
+      "birthplace": "#crew_origin_formosa",
+      "category": "?pass",
+      "fateIds": [
+        "burned",
+        "poisoned",
+        "electrocuted"
+      ],
+      "clue": [
+        "seae"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "origin-appearance",
+        "origin-language",
+        "name-dialog",
+        "relate-scene"
+      ],
+      "sketch": "sketch_formosans",
+      "tally": [],
+      "pay": "0",
+      "insuranceEstateKnown": false,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": "estate-unknown"
+    },
+    {
+      "id": "pass8",
+      "job": "pass",
+      "gender_col": "",
+      "birthplace": "#crew_origin_formosa",
+      "category": "?pass",
+      "fateIds": [
+        "speared-killer:beast",
+        "spiked-beast"
+      ],
+      "clue": [
+        "&",
+        "seae",
+        "pass9"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "origin-appearance",
+        "origin-language",
+        "relate-scene"
+      ],
+      "sketch": "sketch_formosans",
+      "tally": [],
+      "pay": "0",
+      "insuranceEstateKnown": false,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": "estate-unknown"
+    },
+    {
+      "id": "pass9",
+      "job": "pass",
+      "gender_col": "",
+      "birthplace": "#crew_origin_formosa",
+      "category": "?pass",
+      "fateIds": [
+        "gunned-killer:seab"
+      ],
+      "clue": [
+        "pass9"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "origin-appearance",
+        "name-dialog"
+      ],
+      "sketch": "sketch_formosans",
+      "tally": [],
+      "pay": "0",
+      "insuranceEstateKnown": false,
+      "insuranceKilledIntentionally": false,
+      "_raw_insurance": "estate-unknownkilled-accidental"
+    },
+    {
+      "id": "stewship",
+      "job": "stewship",
+      "gender_col": "",
+      "birthplace": "#crew_origin_india",
+      "category": "?stew",
+      "fateIds": [
+        "gunned-killer:bosunmate"
+      ],
+      "clue": [
+        "stewship"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "role-appearance",
+        "origin-appearance"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [],
+      "pay": "35",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "stewcap",
+      "job": "stewcap",
+      "gender_col": "",
+      "birthplace": "#crew_origin_sweden",
+      "category": "?stew",
+      "fateIds": [
+        "burned",
+        "poisoned",
+        "electrocuted"
+      ],
+      "clue": [
+        "sea6"
+      ],
+      "difficulty": "",
+      "hint": [
+        "relate-dialog",
+        "role-dialog",
+        "role-appearance"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [
+        "demerit_duties"
+      ],
+      "pay": "45",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "stewm1",
+      "job": "stewm1",
+      "gender_col": "",
+      "birthplace": "#crew_origin_wales",
+      "category": "?stew",
+      "fateIds": [
+        "sworded-killer:top2"
+      ],
+      "clue": [
+        "stewm1"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "name-dialog",
+        "role-appearance"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "merit_duties"
+      ],
+      "pay": "35",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "stewm2",
+      "job": "stewm2",
+      "gender_col": "",
+      "birthplace": "#crew_origin_ireland",
+      "category": "?stew",
+      "fateIds": [
+        "knifed-killer:pass7"
+      ],
+      "clue": [
+        "|",
+        "pass2",
+        "stewm2"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "role-appearance",
+        "relate-scene",
+        "relate-dialog"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "crime_mutiny",
+        "crime_theft"
+      ],
+      "pay": "35",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "stewm3",
+      "job": "stewm3",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?stew",
+      "fateIds": [
+        "crushed-cannon"
+      ],
+      "clue": [
+        "pass5"
+      ],
+      "difficulty": "",
+      "hint": [
+        "role-appearance",
+        "relate-scene"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [],
+      "pay": "10",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "stewm4",
+      "job": "stewm4",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?stew",
+      "fateIds": [
+        "alive-africa"
+      ],
+      "clue": [
+        "&",
+        "mate2",
+        "|",
+        "pass9",
+        "pass5"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "role-appearance",
+        "relate-scene"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "demerit_abandon"
+      ],
+      "pay": "10",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "mid1",
+      "job": "mid",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?mid",
+      "fateIds": [
+        "exploded"
+      ],
+      "clue": [
+        "mid2"
+      ],
+      "difficulty": "",
+      "hint": [
+        "name-dialog",
+        "relate-scene"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "merit_valor"
+      ],
+      "pay": "30",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "mid2",
+      "job": "mid",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?mid",
+      "fateIds": [
+        "knifed-killer:gunnermate"
+      ],
+      "clue": [
+        "cow"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "elimination",
+        "relate-scene",
+        "role-room"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [],
+      "pay": "30",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "mid3",
+      "job": "mid",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?mid",
+      "fateIds": [
+        "burned",
+        "spiked-beast",
+        "speared-killer:beast",
+        "sworded-killer:mid1"
+      ],
+      "clue": [
+        "cow"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "name-dialog",
+        "relate-scene"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "merit_valor",
+        "merit_duties"
+      ],
+      "pay": "30",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "top5",
+      "job": "top",
+      "gender_col": "",
+      "birthplace": "#crew_origin_persia",
+      "category": "?top",
+      "fateIds": [
+        "fell-overboard",
+        "drowned-killer:beast"
+      ],
+      "clue": [
+        "&",
+        "pass5",
+        "surgeonmate"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "role-scene",
+        "number-scene"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [
+        "merit_duties"
+      ],
+      "pay": "25",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "top6",
+      "job": "top",
+      "gender_col": "",
+      "birthplace": "#crew_origin_scotland",
+      "category": "?top",
+      "fateIds": [
+        "gunned-killer:mate2"
+      ],
+      "clue": [
+        "&",
+        "seac",
+        "top6"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "number-scene"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [
+        "merit_valor"
+      ],
+      "pay": "25",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "top1",
+      "job": "top",
+      "gender_col": "",
+      "birthplace": "#crew_origin_china",
+      "category": "?top",
+      "fateIds": [
+        "electrocuted"
+      ],
+      "clue": [
+        "&",
+        "seac",
+        "|",
+        "pass9",
+        "|",
+        "pass8",
+        "top1"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "role-scene",
+        "number-scene",
+        "origin-appearance"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "merit_duties"
+      ],
+      "pay": "25",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "top4",
+      "job": "top",
+      "gender_col": "",
+      "birthplace": "#crew_origin_china",
+      "category": "?top",
+      "fateIds": [
+        "decapitated-killer:beast",
+        "clawed-beast",
+        "strangled-killer:beast"
+      ],
+      "clue": [
+        "&",
+        "seac",
+        "surgeonmate"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "role-scene",
+        "number-scene",
+        "origin-appearance"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [
+        "merit_valor"
+      ],
+      "pay": "25",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "top7",
+      "job": "top",
+      "gender_col": "",
+      "birthplace": "#crew_origin_china",
+      "category": "?top",
+      "fateIds": [
+        "speared-killer:beast",
+        "spiked-beast"
+      ],
+      "clue": [
+        "&",
+        "pass5",
+        "&",
+        "seac",
+        "|",
+        "pass9",
+        "top7"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "role-scene",
+        "number-scene",
+        "origin-appearance",
+        "elimination"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "crime_mutiny",
+        "crime_theft"
+      ],
+      "pay": "25",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "top8",
+      "job": "top",
+      "gender_col": "",
+      "birthplace": "#crew_origin_china",
+      "category": "?top",
+      "fateIds": [
+        "dismembered-killer:beast",
+        "crushed-beast",
+        "drowned-killer:beast",
+        "fell-overboard",
+        "eaten-killer:beast"
+      ],
+      "clue": [
+        "pass5"
+      ],
+      "difficulty": "",
+      "hint": [
+        "role-scene",
+        "number-scene",
+        "origin-appearance"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "merit_valor",
+        "merit_duties"
+      ],
+      "pay": "25",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "top9",
+      "job": "top",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?top",
+      "fateIds": [
+        "speared-killer:beast",
+        "spiked-beast"
+      ],
+      "clue": [
+        "top9"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "name-dialog",
+        "role-scene"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [],
+      "pay": "25",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "top3",
+      "job": "top",
+      "gender_col": "",
+      "birthplace": "#crew_origin_newguinea",
+      "category": "?top",
+      "fateIds": [
+        "dismembered-killer:beast",
+        "crushed-beast"
+      ],
+      "clue": [
+        "top3"
+      ],
+      "difficulty": "",
+      "hint": [
+        "origin-appearance"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [
+        "merit_valor",
+        "merit_duties"
+      ],
+      "pay": "25",
+      "insuranceEstateKnown": false,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": "estate-unknown"
+    },
+    {
+      "id": "topa",
+      "job": "top",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?top",
+      "fateIds": [
+        "clubbed-killer:captain",
+        "speared-killer:captain"
+      ],
+      "clue": [
+        "&",
+        "seac",
+        "pass5"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "role-scene",
+        "number-scene"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [
+        "crime_mutiny"
+      ],
+      "pay": "25",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "top2",
+      "job": "top",
+      "gender_col": "",
+      "birthplace": "#crew_origin_russia",
+      "category": "?top",
+      "fateIds": [
+        "gunned-killer:pass3"
+      ],
+      "clue": [
+        "&",
+        "seac",
+        "|",
+        "pass5",
+        "top1"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "role-scene",
+        "number-scene",
+        "origin-language"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [
+        "merit_duties"
+      ],
+      "pay": "25",
+      "insuranceEstateKnown": false,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": "estate-unknown"
+    },
+    {
+      "id": "sea1",
+      "job": "sea",
+      "gender_col": "",
+      "birthplace": "#crew_origin_russia",
+      "category": "?sea",
+      "fateIds": [
+        "drowned-killer:beast",
+        "strangled-killer:beast",
+        "clawed-beast",
+        "fell-overboard"
+      ],
+      "clue": [
+        "&",
+        "&",
+        "seac",
+        "|",
+        "stewm2",
+        "top6",
+        "|",
+        "top1",
+        "pass5"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "number-scene",
+        "origin-language"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [
+        "crime_mutiny",
+        "crime_theft"
+      ],
+      "pay": "15",
+      "insuranceEstateKnown": false,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": "estate-unknown"
+    },
+    {
+      "id": "sea5",
+      "job": "sea",
+      "gender_col": "",
+      "birthplace": "#crew_origin_russia",
+      "category": "?sea",
+      "fateIds": [
+        "drowned-killer:beast",
+        "strangled-killer:beast",
+        "clawed-beast",
+        "fell-overboard"
+      ],
+      "clue": [
+        "&",
+        "seac",
+        "|",
+        "stewm2",
+        "top6"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "number-scene",
+        "origin-language"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "crime_mutiny",
+        "crime_theft"
+      ],
+      "pay": "15",
+      "insuranceEstateKnown": false,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": "estate-unknown"
+    },
+    {
+      "id": "sea2",
+      "job": "sea",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?sea",
+      "fateIds": [
+        "drowned-killer:beast",
+        "fell-overboard",
+        "eaten-killer:beast"
+      ],
+      "clue": [
+        "sea3"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "relate-dialog",
+        "relate-manifest",
+        "role-scene",
+        "guess"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [
+        "demerit_abandon",
+        "merit_duties"
+      ],
+      "pay": "15",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "sea3",
+      "job": "sea",
+      "gender_col": "",
+      "birthplace": "#crew_origin_denmark",
+      "category": "?sea",
+      "fateIds": [
+        "clubbed-killer:sea2"
+      ],
+      "clue": [
+        "sea3"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "origin-dialog",
+        "origin-language"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [],
+      "pay": "15",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "sea6",
+      "job": "sea",
+      "gender_col": "",
+      "birthplace": "#crew_origin_wales",
+      "category": "?sea",
+      "fateIds": [
+        "sworded-killer:stewcap",
+        "dismembered-killer:stewcap"
+      ],
+      "clue": [
+        "sea6"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "name-dialog"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "merit_duties"
+      ],
+      "pay": "15",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "sea4",
+      "job": "sea",
+      "gender_col": "",
+      "birthplace": "#crew_origin_india",
+      "category": "?sea",
+      "fateIds": [
+        "expired-sick"
+      ],
+      "clue": [
+        "seac"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "number-scene",
+        "origin-appearance"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [],
+      "pay": "15",
+      "insuranceEstateKnown": false,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": "estate-unknown"
+    },
+    {
+      "id": "sea7",
+      "job": "sea",
+      "gender_col": "",
+      "birthplace": "#crew_origin_india",
+      "category": "?sea",
+      "fateIds": [
+        "crushed-beast",
+        "crushed-cannon"
+      ],
+      "clue": [
+        "seac"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "number-scene",
+        "origin-appearance",
+        "origin-language"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [
+        "merit_duties"
+      ],
+      "pay": "15",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "sea8",
+      "job": "sea",
+      "gender_col": "",
+      "birthplace": "#crew_origin_india",
+      "category": "?sea",
+      "fateIds": [
+        "crushed-beast",
+        "crushed-cargo",
+        "fell-stairs"
+      ],
+      "clue": [
+        "seac"
+      ],
+      "difficulty": "",
+      "hint": [
+        "number-scene",
+        "origin-appearance",
+        "role-scene"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [
+        "merit_duties"
+      ],
+      "pay": "15",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "seac",
+      "job": "sea",
+      "gender_col": "",
+      "birthplace": "#crew_origin_india",
+      "category": "?sea",
+      "fateIds": [
+        "expired-sick"
+      ],
+      "clue": [
+        "seac"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "number-scene",
+        "name-dialog",
+        "role-scene"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [],
+      "pay": "15",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "seaa",
+      "job": "sea",
+      "gender_col": "",
+      "birthplace": "#crew_origin_sierra",
+      "category": "?sea",
+      "fateIds": [
+        "speared-killer:beast",
+        "spiked-beast"
+      ],
+      "clue": [
+        "&",
+        "sea8",
+        "sea3"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "origin-appearance"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [
+        "merit_duties"
+      ],
+      "pay": "15",
+      "insuranceEstateKnown": false,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": "estate-unknown"
+    },
+    {
+      "id": "seab",
+      "job": "sea",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?sea",
+      "fateIds": [
+        "knifed-killer:captain"
+      ],
+      "clue": [
+        "mid2"
+      ],
+      "difficulty": "easy",
+      "hint": [
+        "name-dialog"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "crime_mutiny"
+      ],
+      "pay": "15",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "sead",
+      "job": "sea",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?sea",
+      "fateIds": [
+        "drowned-killer:beast",
+        "fell-overboard",
+        "eaten-killer:beast"
+      ],
+      "clue": [
+        "&",
+        "sea3",
+        "stewship"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "origin-accent",
+        "elimination"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [
+        "demerit_abandon"
+      ],
+      "pay": "15",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "seae",
+      "job": "sea",
+      "gender_col": "",
+      "birthplace": "#crew_origin_ireland",
+      "category": "?sea",
+      "fateIds": [
+        "speared-killer:beast",
+        "spiked-beast"
+      ],
+      "clue": [
+        "&",
+        "seac",
+        "stewm2"
+      ],
+      "difficulty": "",
+      "hint": [
+        "name-dialog",
+        "origin-accent"
+      ],
+      "sketch": "sketch_justice",
+      "tally": [
+        "crime_mutiny",
+        "crime_theft"
+      ],
+      "pay": "15",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "seaf",
+      "job": "sea",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?sea",
+      "fateIds": [
+        "cannoned-killer:beast",
+        "cannoned-killer:sea7",
+        "exploded",
+        "fell-overboard",
+        "eaten-killer:beast",
+        "drowned-killer:beast"
+      ],
+      "clue": [
+        "&",
+        "seac",
+        "pass5"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "number-scene",
+        "origin-appearance",
+        "elimination"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [
+        "merit_valor"
+      ],
+      "pay": "15",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    },
+    {
+      "id": "seag",
+      "job": "sea",
+      "gender_col": "",
+      "birthplace": "#crew_origin_england",
+      "category": "?sea",
+      "fateIds": [
+        "crushed-cargo"
+      ],
+      "clue": [
+        "&",
+        "sea3",
+        "seag"
+      ],
+      "difficulty": "hard",
+      "hint": [
+        "relate-dialog",
+        "role-scene",
+        "guess"
+      ],
+      "sketch": "sketch_dance",
+      "tally": [],
+      "pay": "15",
+      "insuranceEstateKnown": true,
+      "insuranceKilledIntentionally": true,
+      "_raw_insurance": ""
+    }
+  ],
+  "moments": [
+    {
+      "id": "d000-stow-m00-seag",
+      "disaster": "d000",
+      "corpse": "",
+      "music": "01 Loose Cargo B",
+      "die": [
+        "seag"
+      ],
+      "clear": "white",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d000-stow-m01-stowaway",
+      "disaster": "d000",
+      "corpse": "moved",
+      "music": "01 Loose Cargo A",
+      "die": [
+        "-"
+      ],
+      "clear": "white",
+      "skel": "X",
+      "unlock": [
+        "surgeonmate"
+      ]
+    },
+    {
+      "id": "d010-cold-m00-seac",
+      "disaster": "d010",
+      "corpse": "moved",
+      "music": "02 A Bitter Cold A",
+      "die": [
+        "seac"
+      ],
+      "clear": "white",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d010-cold-m01-sea4",
+      "disaster": "d010",
+      "corpse": "moved",
+      "music": "02 A Bitter Cold B",
+      "die": [
+        "sea4"
+      ],
+      "clear": "white",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d010-cold-m02-cow",
+      "disaster": "d010",
+      "corpse": "",
+      "music": "02 A Bitter Cold A",
+      "die": [
+        "-"
+      ],
+      "clear": "black",
+      "skel": "X",
+      "unlock": [
+        "bosun"
+      ]
+    },
+    {
+      "id": "d020-shel-m00-pass2",
+      "disaster": "d020",
+      "corpse": "moved",
+      "music": "03 Murder B",
+      "die": [
+        "pass2"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d020-shel-m02-pass9",
+      "disaster": "d020",
+      "corpse": "",
+      "music": "03 Murder A",
+      "die": [
+        "pass9"
+      ],
+      "clear": "white",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d020-shel-m03-top6",
+      "disaster": "d020",
+      "corpse": "moved",
+      "music": "03 Murder B",
+      "die": [
+        "top6"
+      ],
+      "clear": "black",
+      "skel": "X",
+      "unlock": [
+        "bosun"
+      ]
+    },
+    {
+      "id": "d030-laun-m00-top7",
+      "disaster": "d030",
+      "corpse": "inceptive",
+      "music": "04 The Calling A",
+      "die": [
+        "top7"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d030-laun-m01-seae",
+      "disaster": "d030",
+      "corpse": "inceptive",
+      "music": "04 The Calling B",
+      "die": [
+        "seae"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d030-laun-m02-stewm2",
+      "disaster": "d030",
+      "corpse": "inceptive",
+      "music": "04 The Calling A",
+      "die": [
+        "stewm2"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d030-laun-m03-pass6",
+      "disaster": "d030",
+      "corpse": "moved",
+      "music": "04 The Calling B",
+      "die": [
+        "pass6"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d030-laun-m04-pass7",
+      "disaster": "d030",
+      "corpse": "moved",
+      "music": "04 The Calling A",
+      "die": [
+        "pass7"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d030-laun-m05-mate2",
+      "disaster": "d030",
+      "corpse": "moved",
+      "music": "04 The Calling B",
+      "die": [
+        "mate2"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d040-merm-m00-pass8",
+      "disaster": "d040",
+      "corpse": "",
+      "music": "05 Unholy Captives B",
+      "die": [
+        "pass8",
+        "seaa"
+      ],
+      "clear": "white",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d040-merm-m01-cook",
+      "disaster": "d040",
+      "corpse": "",
+      "music": "05 Unholy Captives A",
+      "die": [
+        "cook"
+      ],
+      "clear": "white",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d040-merm-m02-sea8",
+      "disaster": "d040",
+      "corpse": "",
+      "music": "05 Unholy Captives B",
+      "die": [
+        "sea8"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d040-merm-m03-sea6",
+      "disaster": "d040",
+      "corpse": "",
+      "music": "05 Unholy Captives A",
+      "die": [
+        "sea6"
+      ],
+      "clear": "black",
+      "skel": "X",
+      "unlock": [
+        "surgeonmate"
+      ]
+    },
+    {
+      "id": "d050-ride-m00-top1",
+      "disaster": "d050",
+      "corpse": "",
+      "music": "06 Soldiers of the Sea A",
+      "die": [
+        "top1"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d050-ride-m01-top9",
+      "disaster": "d050",
+      "corpse": "",
+      "music": "06 Soldiers of the Sea C",
+      "die": [
+        "top9"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d050-ride-m02-carpmate",
+      "disaster": "d050",
+      "corpse": "",
+      "music": "06 Soldiers of the Sea A",
+      "die": [
+        "carpmate"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d050-ride-m03-surgeonmate",
+      "disaster": "d050",
+      "corpse": "",
+      "music": "06 Soldiers of the Sea C",
+      "die": [
+        "surgeonmate",
+        "top4"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d050-ride-m04-mid3",
+      "disaster": "d050",
+      "corpse": "",
+      "music": "06 Soldiers of the Sea A",
+      "die": [
+        "mid3"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d050-ride-m05-butcher",
+      "disaster": "d050",
+      "corpse": "",
+      "music": "06 Soldiers of the Sea C",
+      "die": [
+        "butcher"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d050-ride-m06-stewship",
+      "disaster": "d050",
+      "corpse": "",
+      "music": "06 Soldiers of the Sea A",
+      "die": [
+        "stewship"
+      ],
+      "clear": "black",
+      "skel": "X",
+      "unlock": [
+        "bosun"
+      ]
+    },
+    {
+      "id": "d050-ride-m07-carp",
+      "disaster": "d050",
+      "corpse": "moved",
+      "music": "06 Soldiers of the Sea A",
+      "die": [
+        "carp"
+      ],
+      "clear": "black",
+      "skel": "X",
+      "unlock": [
+        "surgeonmate"
+      ]
+    },
+    {
+      "id": "d060-krak-m00-sea3",
+      "disaster": "d060",
+      "corpse": "",
+      "music": "07 The Doom B",
+      "die": [
+        "sea3"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d060-krak-m01-pass5",
+      "disaster": "d060",
+      "corpse": "",
+      "music": "07 The Doom A",
+      "die": [
+        "pass5"
+      ],
+      "clear": "black",
+      "skel": "X",
+      "unlock": [
+        "stewm3",
+        "carpmate"
+      ]
+    },
+    {
+      "id": "d060-krak-m02-sea7",
+      "disaster": "d060",
+      "corpse": "",
+      "music": "07 The Doom B",
+      "die": [
+        "sea7"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d060-krak-m03-gunner",
+      "disaster": "d060",
+      "corpse": "",
+      "music": "07 The Doom A",
+      "die": [
+        "gunner",
+        "seaf"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d060-krak-m04-stewm3",
+      "disaster": "d060",
+      "corpse": "",
+      "music": "07 The Doom B",
+      "die": [
+        "stewm3"
+      ],
+      "clear": "black",
+      "skel": "X",
+      "unlock": [
+        "mid1"
+      ]
+    },
+    {
+      "id": "d060-krak-m05-mid1",
+      "disaster": "d060",
+      "corpse": "",
+      "music": "07 The Doom A",
+      "die": [
+        "mid1"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d060-krak-m06-top3",
+      "disaster": "d060",
+      "corpse": "",
+      "music": "07 The Doom B",
+      "die": [
+        "top3"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d060-krak-m07-pass1",
+      "disaster": "d060",
+      "corpse": "moved",
+      "music": "07 The Doom A",
+      "die": [
+        "pass1"
+      ],
+      "clear": "white",
+      "skel": "X",
+      "unlock": [
+        "topa"
+      ]
+    },
+    {
+      "id": "d070-save-m00-stewcap",
+      "disaster": "d070",
+      "corpse": "inceptive",
+      "music": "08 Bargain B",
+      "die": [
+        "stewcap"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d070-save-m01-mermaid3",
+      "disaster": "d070",
+      "corpse": "inceptive",
+      "music": "08 Bargain D",
+      "die": [
+        "-"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d070-save-m02-mermaid2",
+      "disaster": "d070",
+      "corpse": "inceptive",
+      "music": "08 Bargain C",
+      "die": [
+        "-"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d070-save-m03-mate3",
+      "disaster": "d070",
+      "corpse": "inceptive",
+      "music": "08 Bargain B",
+      "die": [
+        "mate3"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d070-save-m04-monkey",
+      "disaster": "d070",
+      "corpse": "",
+      "music": "08 Bargain A",
+      "die": [
+        "-"
+      ],
+      "clear": "black",
+      "skel": "X",
+      "unlock": []
+    },
+    {
+      "id": "d080-esca-m00-bosun",
+      "disaster": "d080",
+      "corpse": "",
+      "music": "09 Escape B",
+      "die": [
+        "bosun"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d080-esca-m01-stewm1",
+      "disaster": "d080",
+      "corpse": "",
+      "music": "09 Escape A",
+      "die": [
+        "stewm1"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d080-esca-m02-top2",
+      "disaster": "d080",
+      "corpse": "",
+      "music": "09 Escape B",
+      "die": [
+        "top2"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d080-esca-m03-gunnermate",
+      "disaster": "d080",
+      "corpse": "",
+      "music": "09 Escape A",
+      "die": [
+        "gunnermate"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d080-esca-m04-mate4",
+      "disaster": "d080",
+      "corpse": "",
+      "music": "09 Escape B",
+      "die": [
+        "mate4"
+      ],
+      "clear": "black",
+      "skel": "",
+      "unlock": []
+    },
+    {
+      "id": "d080-esca-m05-mid2",
+      "disaster": "d080",
+      "corpse": "",
+      "music": "09 Escape A",
+      "die": [
+        "mid2"
+      ],
+      "clear": "black",
+      "skel": "X",
+      "unlock": [
+        "mid1"
+      ]
+    },
+    {
+      "id": "d090-fate-m00-mate1",
+      "disaster": "d090",
+      "corpse": "",
+      "music": "10 The End A",
+      "die": [
+        "mate1"
+      ],
+      "clear": "white",
+      "skel": "X",
+      "unlock": []
+    },
+    {
+      "id": "d090-fate-m01-seab",
+      "disaster": "d090",
+      "corpse": "",
+      "music": "10 The End B",
+      "die": [
+        "seab"
+      ],
+      "clear": "white",
+      "skel": "X",
+      "unlock": [
+        "mate1"
+      ]
+    },
+    {
+      "id": "d090-fate-m02-topa",
+      "disaster": "d090",
+      "corpse": "",
+      "music": "10 The End A",
+      "die": [
+        "topa"
+      ],
+      "clear": "white",
+      "skel": "X",
+      "unlock": [
+        "mate1"
+      ]
+    },
+    {
+      "id": "d090-fate-m03-captain",
+      "disaster": "d090",
+      "corpse": "",
+      "music": "10 The End B",
+      "die": [
+        "captain"
+      ],
+      "clear": "white",
+      "skel": "X",
+      "unlock": [
+        "topa"
+      ]
+    }
+  ],
+  "presence": {
+    "d000-stow-m00-seag": [
+      "pass9",
+      "sea3",
+      "sea2",
+      "top2",
+      "sea5",
+      "sea4",
+      "seac",
+      "seab",
+      "seaa",
+      "bosunmate",
+      "seag",
+      "seae",
+      "sead"
+    ],
+    "d000-stow-m01-stowaway": [
+      "pass9",
+      "sea3",
+      "sea2",
+      "top2",
+      "sea5",
+      "sea4",
+      "seac",
+      "seab",
+      "seaa",
+      "bosunmate",
+      "seag",
+      "seae",
+      "sead"
+    ],
+    "d005-sket-m00-sk_dance": [
+      "butcher",
+      "cook",
+      "pass1",
+      "pass2",
+      "pass3",
+      "pass4",
+      "pass5",
+      "sea1",
+      "sea2",
+      "sea4",
+      "sea7",
+      "sea8",
+      "seaa",
+      "seac",
+      "sead",
+      "seaf",
+      "seag",
+      "stewcap",
+      "surgeonmate",
+      "top2",
+      "top3",
+      "top4",
+      "top5",
+      "top6",
+      "top9",
+      "topa"
+    ],
+    "d005-sket-m01-sk_princess": [
+      "pass5",
+      "pass6",
+      "pass7",
+      "pass8",
+      "pass9"
+    ],
+    "d010-cold-m00-seac": [
+      "top9",
+      "top8",
+      "top7",
+      "top6",
+      "top5",
+      "top4",
+      "top3",
+      "top2",
+      "top1",
+      "seac",
+      "seab",
+      "seaa",
+      "seaf",
+      "seae",
+      "sead",
+      "sea8",
+      "sea3",
+      "sea2",
+      "sea1",
+      "sea7",
+      "sea5",
+      "sea4",
+      "topa"
+    ],
+    "d010-cold-m01-sea4": [
+      "sea8",
+      "pass8",
+      "monkey",
+      "pass7",
+      "sea7",
+      "sea4",
+      "mate3",
+      "surgeon",
+      "surgeonmate"
+    ],
+    "d010-cold-m02-cow": [
+      "sea8",
+      "pass8",
+      "monkey",
+      "surgeonmate",
+      "pass7",
+      "sea7",
+      "butcher",
+      "sea4",
+      "surgeon",
+      "mid2",
+      "mid3",
+      "mid1"
+    ],
+    "d020-shel-m00-pass2": [
+      "mate2",
+      "pass9",
+      "pass2"
+    ],
+    "d020-shel-m01-sk_justice": [
+      "mate1",
+      "mate2",
+      "captain",
+      "mate4",
+      "mate3"
+    ],
+    "d020-shel-m02-pass9": [
+      "top8",
+      "top7",
+      "top1",
+      "stewm2",
+      "seab",
+      "bosunmate",
+      "seae",
+      "captain",
+      "stewm4",
+      "stewm3",
+      "butcher",
+      "gunner",
+      "pass6",
+      "pass8",
+      "pass9",
+      "sea3",
+      "pass5",
+      "carp",
+      "pass7",
+      "bosun",
+      "sea6",
+      "sea5",
+      "mate1",
+      "mate2",
+      "mate3",
+      "mate4",
+      "carpmate",
+      "cook",
+      "gunnermate"
+    ],
+    "d020-shel-m03-top6": [
+      "sea9",
+      "pass9",
+      "sea3",
+      "top6",
+      "sea1",
+      "pass7",
+      "sea5",
+      "top7",
+      "mate2",
+      "stewm2",
+      "pass6",
+      "seae",
+      "mid1"
+    ],
+    "d030-laun-m00-top7": [
+      "top7",
+      "sea1",
+      "pass7",
+      "mermaid1",
+      "sea5",
+      "mate2",
+      "stewm2",
+      "pass6",
+      "seae"
+    ],
+    "d030-laun-m01-seae": [
+      "top7",
+      "pass6",
+      "pass7",
+      "mermaid1",
+      "sea5",
+      "mermaid3",
+      "mermaid2",
+      "mate2",
+      "stewm2",
+      "sea1",
+      "seae"
+    ],
+    "d030-laun-m02-stewm2": [
+      "top7",
+      "pass6",
+      "pass7",
+      "mermaid1",
+      "sea5",
+      "mermaid3",
+      "mermaid2",
+      "mate2",
+      "stewm2",
+      "seae"
+    ],
+    "d030-laun-m03-pass6": [
+      "top7",
+      "pass6",
+      "pass7",
+      "mermaid1",
+      "stewm2",
+      "mermaid3",
+      "mate2",
+      "seae"
+    ],
+    "d030-laun-m04-pass7": [
+      "pass6",
+      "pass7",
+      "mermaid1",
+      "mermaid3",
+      "mermaid2",
+      "mate2"
+    ],
+    "d030-laun-m05-mate2": [
+      "pass8",
+      "pass6",
+      "pass7",
+      "mermaid1",
+      "mermaid3",
+      "mermaid2",
+      "mate2",
+      "mate4",
+      "stewcap"
+    ],
+    "d040-merm-m00-pass8": [
+      "top1",
+      "seaa",
+      "bosunmate",
+      "seaf",
+      "sead",
+      "captain",
+      "surgeonmate",
+      "sea8",
+      "pass8",
+      "sea3",
+      "sea2",
+      "pass6",
+      "pass7",
+      "bosun",
+      "sea6",
+      "mermaid3",
+      "mermaid2",
+      "mermaid1",
+      "mate3",
+      "sea7",
+      "surgeon",
+      "mate1",
+      "mate2"
+    ],
+    "d040-merm-m01-cook": [
+      "stewcap",
+      "top9",
+      "top8",
+      "stewship",
+      "top1",
+      "seab",
+      "seaa",
+      "bosunmate",
+      "seaf",
+      "sead",
+      "captain",
+      "surgeonmate",
+      "stewm4",
+      "stewm3",
+      "gunner",
+      "sea2",
+      "mid2",
+      "mid3",
+      "mid1",
+      "sea8",
+      "pass8",
+      "sea3",
+      "sea7",
+      "bosun",
+      "sea6",
+      "mermaid3",
+      "mate1",
+      "mermaid1",
+      "mate3",
+      "cook",
+      "surgeon",
+      "mermaid2",
+      "gunnermate",
+      "top4"
+    ],
+    "d040-merm-m02-sea8": [
+      "sea8",
+      "pass5",
+      "carp",
+      "stewship",
+      "sea7",
+      "sea6",
+      "butcher",
+      "purser",
+      "mermaid3",
+      "mermaid2",
+      "mermaid1",
+      "carpmate",
+      "sea2",
+      "cook",
+      "mid1"
+    ],
+    "d040-merm-m03-sea6": [
+      "bosunmate",
+      "stewcap",
+      "surgeonmate",
+      "sea8",
+      "sea3",
+      "pass5",
+      "carp",
+      "stewship",
+      "bosun",
+      "sea6",
+      "butcher",
+      "mate1",
+      "mate3",
+      "sea7",
+      "carpmate",
+      "gunnermate",
+      "surgeon",
+      "captain",
+      "seaf",
+      "sead"
+    ],
+    "d050-ride-m00-top1": [
+      "top9",
+      "top8",
+      "sea3",
+      "sea2",
+      "top5",
+      "top4",
+      "sea7",
+      "top2",
+      "top1",
+      "sead",
+      "seab",
+      "top3",
+      "bosunmate",
+      "rider2",
+      "seaf",
+      "topa",
+      "rider1"
+    ],
+    "d050-ride-m01-top9": [
+      "top9",
+      "sea3",
+      "sea2",
+      "sea7",
+      "top1",
+      "sead",
+      "seab",
+      "bosunmate",
+      "rider2",
+      "seaf",
+      "rider1"
+    ],
+    "d050-ride-m02-carpmate": [
+      "top9",
+      "sea3",
+      "sea2",
+      "carp",
+      "sea7",
+      "top1",
+      "stewm4",
+      "mate4",
+      "carpmate",
+      "rider2",
+      "rider1"
+    ],
+    "d050-ride-m03-surgeonmate": [
+      "top4",
+      "surgeonmate",
+      "pass5",
+      "carp",
+      "stewship",
+      "bosun",
+      "butcher",
+      "gunner",
+      "rider1",
+      "mate1",
+      "mate4",
+      "carpmate",
+      "rider2",
+      "sea2",
+      "gunnermate",
+      "bosunmate",
+      "mid2",
+      "mid3",
+      "top5",
+      "mid1"
+    ],
+    "d050-ride-m04-mid3": [
+      "top4",
+      "surgeonmate",
+      "sea2",
+      "carp",
+      "stewship",
+      "bosun",
+      "butcher",
+      "purser",
+      "rider1",
+      "mate1",
+      "surgeon",
+      "bosunmate",
+      "mid2",
+      "mid3",
+      "mid1"
+    ],
+    "d050-ride-m05-butcher": [
+      "sea2",
+      "carp",
+      "stewship",
+      "bosun",
+      "butcher",
+      "purser",
+      "surgeon",
+      "rider1",
+      "mid2",
+      "mid3",
+      "mid1"
+    ],
+    "d050-ride-m06-stewship": [
+      "bosunmate",
+      "top4",
+      "surgeonmate",
+      "rider2",
+      "top5",
+      "stewship",
+      "bosun",
+      "purser",
+      "butcher",
+      "gunner",
+      "rider1",
+      "mate1",
+      "gunnermate",
+      "surgeon",
+      "captain",
+      "mid2",
+      "mid3",
+      "mid1"
+    ],
+    "d050-ride-m07-carp": [
+      "sea2",
+      "carp",
+      "top3",
+      "bosunmate",
+      "rider2",
+      "top5",
+      "sead"
+    ],
+    "d060-krak-m00-sea3": [
+      "sea3",
+      "sea2",
+      "sead",
+      "purser"
+    ],
+    "d060-krak-m01-pass5": [
+      "top8",
+      "sea3",
+      "pass5",
+      "top5",
+      "top3",
+      "stewm1",
+      "stewm3",
+      "stewm4",
+      "mate3",
+      "mate4",
+      "sea7",
+      "seab",
+      "top2",
+      "seaf",
+      "topa"
+    ],
+    "d060-krak-m02-sea7": [
+      "sea7",
+      "top3",
+      "top2",
+      "gunner",
+      "seab",
+      "seaf",
+      "topa"
+    ],
+    "d060-krak-m03-gunner": [
+      "sea7",
+      "top3",
+      "top2",
+      "gunner",
+      "seab",
+      "topa"
+    ],
+    "d060-krak-m04-stewm3": [
+      "sea7",
+      "top2",
+      "stewm3",
+      "mate3",
+      "gunner",
+      "mid2",
+      "mid1"
+    ],
+    "d060-krak-m05-mid1": [
+      "top5",
+      "top3",
+      "mate4",
+      "gunnermate",
+      "mid2",
+      "mid1"
+    ],
+    "d060-krak-m06-top3": [
+      "top8",
+      "sea2",
+      "bosun",
+      "top2",
+      "purser",
+      "sead",
+      "mate3",
+      "mate4",
+      "gunnermate",
+      "top3",
+      "bosunmate",
+      "mid2",
+      "topa",
+      "mid1"
+    ],
+    "d060-krak-m07-pass1": [
+      "sea9",
+      "top8",
+      "pass4",
+      "top3",
+      "stewm1",
+      "bosun",
+      "pass1",
+      "pass3",
+      "mate3",
+      "gunnermate",
+      "bosunmate",
+      "topa"
+    ],
+    "d070-save-m00-stewcap": [
+      "stewcap"
+    ],
+    "d070-save-m01-mermaid3": [
+      "mermaid3",
+      "captain",
+      "stewcap"
+    ],
+    "d070-save-m02-mermaid2": [
+      "mermaid3",
+      "mermaid2",
+      "captain",
+      "stewcap"
+    ],
+    "d070-save-m03-mate3": [
+      "stewcap",
+      "stewm4",
+      "stewm1",
+      "mermaid3",
+      "mermaid2",
+      "mermaid1",
+      "mate3"
+    ],
+    "d070-save-m04-monkey": [
+      "stewcap",
+      "monkey",
+      "stewm1",
+      "mermaid3",
+      "mermaid2",
+      "mate3",
+      "surgeon"
+    ],
+    "d080-esca-m00-bosun": [
+      "bosun",
+      "mate1",
+      "mate4",
+      "gunnermate",
+      "captain",
+      "mid2"
+    ],
+    "d080-esca-m00-stewm1": [
+      "top2",
+      "pass4",
+      "bosun",
+      "stewm1",
+      "pass3",
+      "mate1",
+      "mate4",
+      "stewm4",
+      "gunnermate",
+      "seab",
+      "surgeon",
+      "captain",
+      "mid2",
+      "topa"
+    ],
+    "d080-esca-m01-stewm1": [
+      "top2",
+      "pass4",
+      "bosun",
+      "stewm1",
+      "pass3",
+      "mate1",
+      "mate4",
+      "stewm4",
+      "gunnermate",
+      "seab",
+      "surgeon",
+      "captain",
+      "mid2",
+      "topa"
+    ],
+    "d080-esca-m01-top2": [
+      "top2",
+      "pass4",
+      "bosun",
+      "stewm1",
+      "pass3",
+      "mate1",
+      "mate4",
+      "stewm4",
+      "gunnermate",
+      "seab",
+      "surgeon",
+      "captain",
+      "mid2",
+      "topa"
+    ],
+    "d080-esca-m02-bosun": [
+      "gunnermate",
+      "mate4",
+      "captain",
+      "bosun",
+      "mid2"
+    ],
+    "d080-esca-m02-top2": [
+      "top2",
+      "pass4",
+      "stewm1",
+      "pass3",
+      "mate1",
+      "mate4",
+      "stewm4",
+      "gunnermate",
+      "seab",
+      "surgeon",
+      "captain",
+      "mid2",
+      "topa"
+    ],
+    "d080-esca-m03-gunnermate": [
+      "top2",
+      "mate1",
+      "mate4",
+      "gunnermate",
+      "seab",
+      "captain",
+      "mid2",
+      "topa"
+    ],
+    "d080-esca-m04-mate4": [
+      "gunnermate",
+      "mate1",
+      "mid2",
+      "mate4",
+      "seab"
+    ],
+    "d080-esca-m05-mid2": [
+      "mate1",
+      "mate4",
+      "gunnermate",
+      "seab",
+      "mid2",
+      "topa"
+    ],
+    "d090-fate-m00-mate1": [
+      "mate1",
+      "captain",
+      "topa",
+      "seab"
+    ],
+    "d090-fate-m01-seab": [
+      "mate1",
+      "captain",
+      "topa",
+      "seab"
+    ],
+    "d090-fate-m02-topa": [
+      "mate1",
+      "captain",
+      "pass1",
+      "topa",
+      "seab"
+    ],
+    "d090-fate-m03-captain": [
+      "mate1",
+      "captain",
+      "pass1",
+      "topa",
+      "seab"
+    ],
+    "d100-fina-m00-final": [
+      "skel_pass1",
+      "skel_stewm3",
+      "skel_stewship",
+      "skel_captain",
+      "skel_mid2",
+      "skel_topa",
+      "skel_seab",
+      "skel_mate1"
+    ]
+  },
+  "version": "1.2.122"
+}

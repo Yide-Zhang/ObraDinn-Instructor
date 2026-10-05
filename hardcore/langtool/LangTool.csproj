@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- 语言包工具：直接调用 UABEA 自带的引擎 AssetsTools.NET（3.0），
+       省掉自己实现 UnityFS/SerializedFile 的读写。
+       DLL 与 classdata.tpk 从工作区的 uabea-windows/ 引用，
+       只在我们这边构建期使用，不随产物分发。 -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>langtool</AssemblyName>
+    <RootNamespace>LangTool</RootNamespace>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="AssetsTools.NET">
+      <HintPath>..\..\uabea-windows\AssetsTools.NET.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="AssetsTools.NET.MonoCecil">
+      <HintPath>..\..\uabea-windows\AssetsTools.NET.MonoCecil.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>..\..\uabea-windows\Mono.Cecil.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\uabea-windows\classdata.tpk">
+      <Link>classdata.tpk</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

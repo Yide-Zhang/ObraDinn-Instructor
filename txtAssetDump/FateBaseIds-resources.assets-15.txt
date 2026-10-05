@@ -1,0 +1,3 @@
+0 TextAsset Base
+ 1 string m_Name = "FateBaseIds"
+ 1 string m_Script = "unknown\narrowed-killer\ngunned-killer\ncannoned-killer\nknifed-killer\nsworded-killer\nclubbed-killer\naxed-killer\nspeared-killer\ndismembered-killer\ndecapitated-killer\ndrowned-killer\neaten-killer\nstrangled-killer\nspiked-beast\nclawed-beast\nwinged-beast\ntailed-beast\nhooved-beast\ncrushed-cargo\ncrushed-beast\ncrushed-cannon\ncrushed-rigging\ncrushed-stones\nfell-stairs\nfell-rigging\nfell-overboard\nexpired-age\nexpired-sick\nexploded\nelectrocuted\npoisoned\nburned\nfroze\nsuicide-gun\nsuicide-knife\nsuicide-spear\nsuicide-noose\nalive-uk\nalive-eastindies\nalive-westindies\nalive-middleeast\nalive-europe\nalive-africa\nalive-island\nalive-canary\nalive-verde\nalive-azores"

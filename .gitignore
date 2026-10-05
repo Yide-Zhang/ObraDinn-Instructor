@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# PyInstaller work/dist dirs
+/build/
+/dist/
+*.spec.bak
+
+# .NET build intermediates
+obj/
+bin/
+
+# local previews and scratch
+_preview/
+_hero/
+_check_bundled/
+_scratch_*
+
+# editor / OS
+.vscode/
+.DS_Store
+Thumbs.db

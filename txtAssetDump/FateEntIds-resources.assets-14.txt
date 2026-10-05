@@ -1,0 +1,3 @@
+0 TextAsset Base
+ 1 string m_Name = "FateEntIds"
+ 1 string m_Script = "unknown\nenemy\nbeast\n?officer\ncaptain\nmate1\nmate2\nmate3\nmate4\nbosun\nbosunmate\nsurgeon\nsurgeonmate\ncarp\ncarpmate\ncook\nbutcher\ngunner\ngunnermate\npurser\nsea9\npass5\n?pass\npass1\npass2\npass3\npass4\npass6\npass7\npass8\npass9\n?stew\nstewship\nstewcap\nstewm1\nstewm2\nstewm3\nstewm4\n?mid\nmid1\nmid2\nmid3\n?top\ntop5\ntop6\ntop1\ntop4\ntop7\ntop8\ntop9\ntop3\ntopa\ntop2\n?sea\nsea1\nsea5\nsea2\nsea3\nsea6\nsea4\nsea7\nsea8\nseac\nseaa\nseab\nsead\nseae\nseaf\nseag\n"

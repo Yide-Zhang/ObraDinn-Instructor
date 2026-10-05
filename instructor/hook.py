@@ -1,4 +1,4 @@
-"""给游戏 DLL 装「书页浮现」钩子 —— 让存档在书页浮现的同一帧落盘。
+"""给游戏 DLL 装存档钩子 —— 让存档在书页浮现的同一帧落盘。
 
 为什么需要它
 ------------
@@ -414,7 +414,7 @@ def install(raw_game: str = "", *, langtool: Path | None = None,
             except OSError:
                 pass
 
-    print("✔ 钩子已装：书页浮现的那一刻存档就会落盘，提醒会立刻弹出。")
+    print("✔ 存档钩子已装：书页浮现的那一刻存档就会落盘，提醒会立刻弹出。")
     print(f"  想还原：python -m instructor hook --restore")
     return 0
 
@@ -454,11 +454,11 @@ def status_line() -> str:
         return ""
     st = hook_state(dll, lt)
     if st == "yes":
-        return "书页钩子：已装（提醒在「书页浮现」那一刻弹）"
+        return "存档钩子：已装（提醒在「书页浮现」那一刻弹）"
     if st == "no":
-        return ("书页钩子：**未装** —— 提醒要等你走出回忆门之后才弹。"
+        return ("存档钩子：**未装** —— 提醒要等你走出回忆门之后才弹。"
                 "想提前到书页浮现那一刻：python -m instructor hook")
     if st == "half":
-        return ("书页钩子：只装了一半 —— **先 `hook --restore` 还原再装**"
+        return ("存档钩子：只装了一半 —— **先 `hook --restore` 还原再装**"
                 "（直接重装会在新锚点再插一句，旧的那句还在）")
     return ""

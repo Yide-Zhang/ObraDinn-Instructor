@@ -57,7 +57,7 @@ def main() -> int:
         args = sys.argv[1:]
 
         # 把游戏的 ObraDinn.exe（或游戏文件夹、mac 的 .app）拖到本程序图标上：
-        # 当作「--game」—— 记住目录 + 把书页钩子装上，然后弹窗告诉用户结果。
+        # 当作「--game」—— 记住目录 + 把存档钩子装上，然后弹窗告诉用户结果。
         # （hook 会先把原 DLL 备份到 hook-backup/，随时可以用 --restore 还原）
         if args and not args[0].startswith("-") and args[0] not in CMDS \
                 and Path(args[0]).exists():

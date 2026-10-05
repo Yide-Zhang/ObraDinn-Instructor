@@ -319,7 +319,7 @@ python -m instructor curve P2 --fact pagesRevealed,facesWorkable   # 某量随�
 python -m instructor notify "文字"         # 单独试提示音 + 悬浮条
 python -m instructor fonts --report       # 看字体子集状态
 python -m instructor fonts --force        # 强制重裁字体子集
-python -m instructor hook --report        # 看「书页钩子」装没装
+python -m instructor hook --report        # 看「存档钩子」装没装
 python -m instructor hook --game <目录>    # 装钩子（让提醒在书页浮现那一刻弹）
 python -m instructor state                # 看每个槽位已解锁了哪些节点、什么时候解锁的
 python -m instructor state P2 --forget n002   # 把 n002 改回未解锁（测触发时机用）

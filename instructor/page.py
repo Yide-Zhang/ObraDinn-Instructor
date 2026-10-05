@@ -107,8 +107,11 @@ h1{font-family:var(--font-bold);font-size:17px;font-weight:700;margin:0;letter-s
 .opt:hover{background:var(--wash)}
 .opt[aria-pressed="true"]{border-color:var(--fg)}
 .opt small{display:block;color:var(--dim);font-size:12px}
-/* 设置面板（游戏目录 / 存档目录 / 书页钩子） */
-.pop.wide{width:332px;max-height:min(78vh,560px);overflow:auto}
+/* 设置面板（游戏目录 / 存档目录 / 存档钩子） */
+.pop.wide{width:332px;max-height:min(78vh,560px);overflow:auto;
+      /* 跟整页一致：内容超出时不画滚动条（滚轮/触摸照旧能滚） */
+      scrollbar-width:none;-ms-overflow-style:none}
+.pop.wide::-webkit-scrollbar{width:0;height:0;display:none}
 .row{display:flex;gap:8px;align-items:baseline;margin:0 0 7px}
 .lb{color:var(--dim);font-size:12.5px;flex:none;width:60px}
 .vl{flex:1;font-size:12.5px;word-break:break-all}
@@ -122,7 +125,10 @@ input.pi{-webkit-user-select:text;user-select:text}
       background:transparent;border:1px solid var(--line);padding:6px 4px;cursor:pointer}
 .opt2:hover{background:var(--wash)}
 .sep{height:1px;background:var(--soft);margin:11px 0}
-.msg{font-size:12px;color:var(--dim);margin:9px 0 0;white-space:pre-wrap}
+.msg{font-size:12px;color:var(--dim);margin:9px 0 0;white-space:pre-wrap;
+      /* 安装/还原的输出里有很长的路径：必须在浮层内部换行，不能撑宽、不能横向溢出 */
+      word-break:break-all;overflow-wrap:anywhere;max-width:100%}
+.note{color:var(--dim);font-size:12px;margin:-2px 0 9px}
 .hidden{display:none}
 /* 一个一级元素（`- 小节`）= 一块，标题可点，内容可折 */
 .blk{border:1px solid var(--line);margin:0 0 12px}
@@ -186,7 +192,8 @@ footer{color:var(--dim);font-size:12.5px;padding-top:20px;border-top:1px solid v
       <button class="opt2" data-set="apply_saves">用上面路径</button>
     </div>
     <div class="sep"></div>
-    <div class="row"><span class="lb">书页钩子</span><span class="vl" id="v-hook">—</span></div>
+    <div class="row"><span class="lb">存档钩子</span><span class="vl" id="v-hook">—</span></div>
+    <p class="note">推荐安装。可以更及时地给出游戏提示。</p>
     <div class="acts">
       <button class="opt2" data-set="hook_install">安装</button>
       <button class="opt2" data-set="hook_restore">还原</button>
@@ -251,7 +258,7 @@ function applyDev(){
     o.setAttribute("aria-pressed", String(o.dataset.dev === DEV)));
 }
 
-// ---- 设置面板：游戏目录 / 存档目录 / 书页钩子 ---------------------------
+// ---- 设置面板：游戏目录 / 存档目录 / 存档钩子 ---------------------------
 const setpop = document.getElementById("setpop"),
       setmsg = document.getElementById("setmsg"),
       setbtn = document.getElementById("setbtn");
@@ -686,7 +693,7 @@ def write_static(payload: dict, out: Path) -> Path:
 
 
 # ----------------------------------------------------------------- 设置面板
-# （页面右上角的「设置」——游戏目录 / 存档目录 / 书页钩子）
+# （页面右上角的「设置」——游戏目录 / 存档目录 / 存档钩子）
 def _local_request(h) -> bool:
     """只让「本机 + 同源」的请求改设置。
 

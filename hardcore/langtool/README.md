@@ -1,6 +1,6 @@
 # langtool
 
-给「书页钩子」用的小工具：用 Mono.Cecil 往游戏的 `Assembly-CSharp.dll` 里，
+给「存档钩子」用的小工具：用 Mono.Cecil 往游戏的 `Assembly-CSharp.dll` 里，
 在三个回调之后各插一句 `Game.SaveActive()`，让存档在那一刻就落盘 ——
 于是提示不再等玩家走出回忆门，而是**当场**弹出来。
 

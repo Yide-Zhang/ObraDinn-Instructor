@@ -6,7 +6,7 @@
     python -m instructor replay [槽位]             拿 Backup/ 里的真实快照按时间回放，
                                                 报告每个节点「首次触发于第几秒」——
                                                 这是写触发器时最有力的验证工具
-    python -m instructor hook [--game <目录>]      装/查「书页浮现」钩子（让提醒提前到
+    python -m instructor hook [--game <目录>]      装/查存档钩子（让提醒提前到
                                                 书页出现的那一刻；--restore 还原）
     python -m instructor config                  看/改记住的路径（游戏目录、存档目录）；
                                                 --game/--saves 设，--clear 全忘掉
@@ -427,7 +427,7 @@ def cmd_config(a) -> int:
           + (src if rep["game_dir"] else ""))
     print(f"存档目录  {rep['saves_dir'] or rep['saves_effective'] or '（没找到）'}"
           + ("（手动指定）" if rep["saves_dir"] else "（自动探测）"))
-    print(f"书页钩子  {rep['hook']}")
+    print(f"存档钩子  {rep['hook']}")
     print(f"langtool  {rep['langtool'] or '（找不到）'}")
     print(f"设置文件  {rep['settings_path']}")
     return 0

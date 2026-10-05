@@ -24,7 +24,9 @@ New-Item -ItemType Directory "dist\$name" | Out-Null
 Copy-Item 'dist\ObraDinnInstructor\*' "dist\$name\" -Recurse
 
 Write-Output '--- 3. zip'
-Compress-Archive -Path "dist\$name\*" -DestinationPath "dist\$name.zip" -Force
+# NOTE: pass the folder itself (no \*) so the archive keeps a top-level folder --
+# Compress-Archive with 'path\*' would spray the files into the archive root.
+Compress-Archive -Path "dist\$name" -DestinationPath "dist\$name.zip" -Force
 
 Write-Output '--- result'
 Get-Item "dist\$name.zip" | ForEach-Object {

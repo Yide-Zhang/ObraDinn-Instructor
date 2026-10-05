@@ -5,7 +5,11 @@
 """
 from __future__ import annotations
 
+import contextlib
+import io
 import json
+import os
+import re
 import socket
 import sys
 import threading
@@ -84,8 +88,9 @@ i,em{font-family:var(--font-hand);font-style:normal}
 header{position:relative;padding:30px 0 15px;border-bottom:1px solid var(--line);
        margin-bottom:24px}
 h1{font-family:var(--font-bold);font-size:17px;font-weight:700;margin:0;letter-spacing:.12em}
-/* 右上角：操纵器入口 + 浮层 */
-.devbtn{position:absolute;right:0;top:26px;font-family:var(--font);font-size:13px;
+/* 右上角：设置 / 操纵器 两个入口 + 浮层 */
+.hdbtns{position:absolute;right:0;top:26px;display:flex;gap:8px}
+.devbtn{font-family:var(--font);font-size:13px;
       color:var(--fg);background:transparent;border:1px solid var(--line);
       padding:5px 11px;cursor:pointer}
 .devbtn:hover{background:var(--wash)}
@@ -102,6 +107,22 @@ h1{font-family:var(--font-bold);font-size:17px;font-weight:700;margin:0;letter-s
 .opt:hover{background:var(--wash)}
 .opt[aria-pressed="true"]{border-color:var(--fg)}
 .opt small{display:block;color:var(--dim);font-size:12px}
+/* 设置面板（游戏目录 / 存档目录 / 书页钩子） */
+.pop.wide{width:332px;max-height:min(78vh,560px);overflow:auto}
+.row{display:flex;gap:8px;align-items:baseline;margin:0 0 7px}
+.lb{color:var(--dim);font-size:12.5px;flex:none;width:60px}
+.vl{flex:1;font-size:12.5px;word-break:break-all}
+.vl.dim{color:var(--dim)}
+.pi{width:100%;font-family:var(--font);font-size:12.5px;color:var(--fg);
+      background:transparent;border:1px solid var(--line);padding:6px 8px;margin:0 0 7px}
+/* 整页文字都不可选，但输入框里得能选（否则改了都没法复制） */
+input.pi{-webkit-user-select:text;user-select:text}
+.acts{display:flex;gap:6px;margin:0 0 11px}
+.opt2{flex:1;font-family:var(--font);font-size:12.5px;color:var(--fg);
+      background:transparent;border:1px solid var(--line);padding:6px 4px;cursor:pointer}
+.opt2:hover{background:var(--wash)}
+.sep{height:1px;background:var(--soft);margin:11px 0}
+.msg{font-size:12px;color:var(--dim);margin:9px 0 0;white-space:pre-wrap}
 .hidden{display:none}
 /* 一个一级元素（`- 小节`）= 一块，标题可点，内容可折 */
 .blk{border:1px solid var(--line);margin:0 0 12px}
@@ -140,10 +161,38 @@ footer{color:var(--dim);font-size:12.5px;padding-top:20px;border-top:1px solid v
 <div class="wrap">
 <header>
   <h1>已解锁的提示</h1>
-  <button class="devbtn" id="devbtn">操纵器：<span id="devname">键鼠</span><i class="caret"></i></button>
+  <div class="hdbtns">
+    <button class="devbtn" id="setbtn">设置<i class="caret"></i></button>
+    <button class="devbtn" id="devbtn">操纵器：<span id="devname">键鼠</span><i class="caret"></i></button>
+  </div>
   <div class="pop hidden" id="devpop">
     <button class="opt" data-dev="kbm">键鼠<small>键盘 / 鼠标</small></button>
     <button class="opt" data-dev="pad">手柄<small>Xbox · PlayStation 布局</small></button>
+  </div>
+  <div class="pop wide hidden" id="setpop">
+    <div class="row"><span class="lb">游戏目录</span><span class="vl" id="v-game">—</span></div>
+    <input class="pi" id="i-game" spellcheck="false" placeholder="手填游戏目录（含 ObraDinn_Data 的那一层）">
+    <div class="acts">
+      <button class="opt2" data-set="pick_game">选择…</button>
+      <button class="opt2" data-set="auto_game">自动检测</button>
+      <button class="opt2" data-set="apply_game">用上面路径</button>
+    </div>
+    <div class="sep"></div>
+    <div class="row"><span class="lb">存档目录</span><span class="vl" id="v-saves">—</span></div>
+    <input class="pi" id="i-saves" spellcheck="false" placeholder="留空 = 自动探测（一般不用改）">
+    <div class="acts">
+      <button class="opt2" data-set="pick_saves">选择…</button>
+      <button class="opt2" data-set="default_saves">改回默认</button>
+      <button class="opt2" data-set="apply_saves">用上面路径</button>
+    </div>
+    <div class="sep"></div>
+    <div class="row"><span class="lb">书页钩子</span><span class="vl" id="v-hook">—</span></div>
+    <div class="acts">
+      <button class="opt2" data-set="hook_install">安装</button>
+      <button class="opt2" data-set="hook_restore">还原</button>
+      <button class="opt2" data-set="open_log">日志</button>
+    </div>
+    <p class="msg" id="setmsg"></p>
   </div>
 </header>
 <main id="main"></main>
@@ -200,6 +249,75 @@ function applyDev(){
   document.getElementById("devname").textContent = (DEV === "pad") ? "手柄" : "键鼠";
   document.querySelectorAll(".opt").forEach(o =>
     o.setAttribute("aria-pressed", String(o.dataset.dev === DEV)));
+}
+
+// ---- 设置面板：游戏目录 / 存档目录 / 书页钩子 ---------------------------
+const setpop = document.getElementById("setpop"),
+      setmsg = document.getElementById("setmsg"),
+      setbtn = document.getElementById("setbtn");
+
+function setRow(id, text, dim){
+  const el = document.getElementById(id);
+  el.textContent = text || "—";
+  el.className = "vl" + (dim ? " dim" : "");
+}
+
+async function loadSet(clearMsg){
+  if (clearMsg) setmsg.textContent = "";
+  try {
+    const s = await (await fetch("/api/settings")).json();
+    const g = document.getElementById("v-game");
+    if (s.game_dir){
+      setRow("v-game", s.game_dir);
+      g.title = s.game_saved ? "手动指定" : "自动检测到";
+    } else {
+      setRow("v-game", "没找到", true);
+      g.title = s.game_why || "";
+    }
+    setRow("v-saves", s.saves_dir || s.saves_effective || "自动探测", !s.saves_dir);
+    setRow("v-hook", s.hook || "—", !s.game_dir);
+    document.getElementById("i-game").placeholder = s.game_saved
+      ? "当前记住：" + s.game_saved : "手填游戏目录（含 ObraDinn_Data 的那一层）";
+    document.getElementById("i-saves").placeholder = s.saves_dir
+      ? "当前记住：" + s.saves_dir : "留空 = 自动探测（一般不用改）";
+  } catch (e){
+    setmsg.textContent = "读设置失败：" + e;
+  }
+}
+
+async function setAct(act, path){
+  setmsg.textContent = "…";
+  try {
+    const r = await fetch("/api/settings", {
+      method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({act: act, path: path || ""})});
+    const j = await r.json();
+    setmsg.textContent = (j.ok ? "✔ " : "✘ ") + (j.message || "");
+    await loadSet(false);
+  } catch (e){
+    setmsg.textContent = "✘ " + e;
+  }
+}
+
+if (setbtn){
+  setbtn.onclick = (e) => {
+    e.stopPropagation();
+    document.getElementById("devpop").classList.add("hidden");
+    setpop.classList.toggle("hidden");
+    if (!setpop.classList.contains("hidden")) loadSet(true);
+  };
+  setpop.querySelectorAll("[data-set]").forEach(b => {
+    b.onclick = () => {
+      const a = b.dataset.set;
+      if (a === "apply_game") return setAct(a, document.getElementById("i-game").value.trim());
+      if (a === "apply_saves") return setAct(a, document.getElementById("i-saves").value.trim());
+      return setAct(a, "");
+    };
+  });
+  document.addEventListener("click", (e) => {
+    if (!setpop.contains(e.target) && !setbtn.contains(e.target))
+      setpop.classList.add("hidden");
+  });
 }
 
 function itemsHTML(b){
@@ -464,6 +582,10 @@ class Site:
                     body = json.dumps(snap, ensure_ascii=False).encode()
                     self._send(200, body, "application/json; charset=utf-8")
                     return
+                if path.startswith("/api/settings"):
+                    body = json.dumps(settings_report(), ensure_ascii=False).encode()
+                    self._send(200, body, "application/json; charset=utf-8")
+                    return
                 if path in ("/", "/index.html"):
                     html = page_html(snap).encode("utf-8")
                     self._send(200, html, "text/html; charset=utf-8")
@@ -471,11 +593,23 @@ class Site:
                 self._send(404, b"not found", "text/plain; charset=utf-8")
 
             def do_POST(self):                              # noqa: N802
-                # 页面关掉时用 sendBeacon 打过来（只有一个 /api/bye）
+                # 页面用到的两个 POST：关页面的心跳（/api/bye）、设置面板（/api/settings）
+                path = self.path.split("?", 1)[0]
                 n = int(self.headers.get("Content-Length") or 0)
-                if n:
-                    self.rfile.read(n)
-                if self.path.split("?", 1)[0].startswith("/api/bye"):
+                body = self.rfile.read(n) if n else b""
+                if path.startswith("/api/settings"):
+                    if not _local_request(self):
+                        self._send(403, b"forbidden", "text/plain; charset=utf-8")
+                        return
+                    try:
+                        req = json.loads(body or b"{}")
+                    except ValueError:
+                        req = {}
+                    res = apply_setting(req if isinstance(req, dict) else {})
+                    self._send(200, json.dumps(res, ensure_ascii=False).encode(),
+                               "application/json; charset=utf-8")
+                    return
+                if path.startswith("/api/bye"):
                     site.bye_at = time.time()
                     self._send(200, b"ok", "text/plain; charset=utf-8")
                     return
@@ -549,6 +683,146 @@ def write_static(payload: dict, out: Path) -> Path:
         shutil.copy2(ICON, out.parent / ICON.name)
     out.write_text(page_html(payload), encoding="utf-8")
     return out
+
+
+# ----------------------------------------------------------------- 设置面板
+# （页面右上角的「设置」——游戏目录 / 存档目录 / 书页钩子）
+def _local_request(h) -> bool:
+    """只让「本机 + 同源」的请求改设置。
+
+    页面挂在 127.0.0.1 上，但浏览器里任何一个网页都能往这个端口发请求；
+    而设置决定「要改哪个 DLL」—— 不能让别人瞎指一个路径。
+    """
+    host = (h.headers.get("Host") or "").split(":")[0].strip("[]")
+    if host not in ("127.0.0.1", "localhost", "::1"):
+        return False
+    origin = h.headers.get("Origin") or ""
+    if origin and not re.match(r"^https?://(127\.0\.0\.1|localhost|\[::1\])(:\d+)?$", origin):
+        return False
+    return True
+
+
+def _capture(fn, *a, **kw) -> tuple[int, str]:
+    """跑一个会 print 的函数，把输出捞回来（面板上要显示给用户看）。"""
+    buf = io.StringIO()
+    code = 1
+    try:
+        with contextlib.redirect_stdout(buf), contextlib.redirect_stderr(buf):
+            code = int(fn(*a, **kw) or 0)
+    except Exception as e:                               # noqa: BLE001
+        buf.write(f"{type(e).__name__}: {e}")
+    return code, buf.getvalue().strip()
+
+
+def pick_folder(prompt: str) -> tuple[str, str]:
+    """弹系统原生的「选择文件夹」。返回 (路径, 错误)；用户取消 = ("", "")。
+
+    不用 tk：（HTTP 请求跑在工作线程里，tk 只能在主线程动）
+    Windows 借 PowerShell 的 FolderBrowserDialog，macOS 用 osascript。
+    提示语只能是 ASCII —— PowerShell 5.1 按 ANSI 读命令行，中文会乱。
+    """
+    import subprocess
+    try:
+        if sys.platform == "win32":
+            ps = ("Add-Type -AssemblyName System.Windows.Forms;"
+                  "$d = New-Object System.Windows.Forms.FolderBrowserDialog;"
+                  f"$d.Description = '{prompt}';"
+                  "$d.ShowNewFolderButton = $false;"
+                  "if ($d.ShowDialog() -eq [System.Windows.Forms.DialogResult]::OK)"
+                  " { [Console]::Out.Write($d.SelectedPath) }")
+            r = subprocess.run(["powershell", "-NoProfile", "-STA", "-Command", ps],
+                               capture_output=True, text=True,
+                               creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+        elif sys.platform == "darwin":
+            r = subprocess.run(["osascript", "-e",
+                                f'POSIX path of (choose folder with prompt "{prompt}")'],
+                               capture_output=True, text=True)
+        else:
+            return "", "这个系统还没有文件夹选择器，请把路径手动填进输入框"
+    except OSError as e:
+        return "", f"打不开选择器：{e}"
+    if r.returncode != 0:
+        err = (r.stderr or "").strip()
+        if "ancel" in err or "User canceled" in err:      # 取消不是错误
+            return "", ""
+        return "", err[:200] or "选择器返回了错误"
+    return (r.stdout or "").strip(), ""
+
+
+def open_path(p: Path) -> tuple[bool, str]:
+    """用系统默认程序打开（日志、目录……）。"""
+    import subprocess
+    try:
+        if sys.platform == "win32":
+            os.startfile(str(p))                          # type: ignore[attr-defined]
+        elif sys.platform == "darwin":
+            subprocess.Popen(["open", str(p)])           # noqa: S603
+        else:
+            subprocess.Popen(["xdg-open", str(p)])       # noqa: S603
+    except OSError as e:
+        return False, f"打不开：{e}"
+    return True, f"已打开 {p}"
+
+
+def settings_report() -> dict:
+    """设置面板要的一览（游戏目录 / 存档目录 / 钩子状态 / 各种路径）。"""
+    from . import facts as F, hook as HK, logfile as LOG, settings as SET
+    d = HK.summary()
+    d["saves_dir"] = SET.get("saves_dir")
+    d["saves_effective"] = str(F.saves_dir() or "")
+    d["settings_path"] = str(SET.path())
+    d["log_path"] = str(LOG.path())
+    return d
+
+
+def apply_setting(req: dict) -> dict:
+    """处理设置面板的一个动作；永远返回 {"ok": bool, "message": str}。"""
+    from . import hook as HK, settings as SET
+    act = str(req.get("act") or "")
+    raw = str(req.get("path") or "").strip()
+
+    if act in ("pick_game", "pick_saves"):
+        got, err = pick_folder("Select the folder"
+                               if act == "pick_game" else "Select the saves folder")
+        if not got:
+            return {"ok": False, "message": err or "已取消"}
+        raw = got
+
+    if act == "auto_game":
+        p, why = HK.autodetect()
+        return {"ok": p is not None,
+                "message": f"自动找到并记住了：{p}" if p else why}
+
+    if act in ("apply_game", "pick_game"):
+        p, why = HK.set_game_dir(raw)
+        return {"ok": p is not None, "message": f"已记住：{p}" if p else why}
+
+    if act == "forget_game":
+        HK.forget_game_dir()
+        return {"ok": True, "message": "已忘掉记住的游戏目录"}
+
+    if act == "default_saves":
+        SET.update(saves_dir=None)
+        return {"ok": True, "message": "已改回自动探测"}
+
+    if act in ("apply_saves", "pick_saves"):
+        d = Path(raw).expanduser()
+        if not d.is_dir():
+            return {"ok": False, "message": f"不是文件夹：{raw or '（空）'}"}
+        SET.update(saves_dir=str(d))
+        return {"ok": True, "message": f"已记住：{d}"}
+
+    if act == "hook_install":
+        code, txt = _capture(HK.install)
+        return {"ok": code == 0, "message": txt or "（没有任何输出）"}
+    if act == "hook_restore":
+        code, txt = _capture(HK.restore)
+        return {"ok": code == 0, "message": txt or "（没有任何输出）"}
+    if act == "open_log":
+        from . import logfile as LOG
+        ok, msg = open_path(LOG.path())
+        return {"ok": ok, "message": msg}
+    return {"ok": False, "message": f"未知操作：{act}"}
 
 
 # ----------------------------------------------------------------- 开 app 窗口

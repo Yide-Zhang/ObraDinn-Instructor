@@ -262,7 +262,17 @@ def _derive(f: dict, moments: dict, faces: dict, stats: dict) -> None:
 
 # --------------------------------------------------------------- 存档位置
 def saves_dir() -> Path | None:
-    """找游戏存档目录。优先复用补丁工具的实现（跨平台）。"""
+    """找游戏存档目录。优先级：设置里手填的 > 补丁工具的实现（跨平台）> 平台默认。
+
+    手填的那个只在「确实是个目录」时才认 —— 填错了就当没填，
+    免得一个手滑的路径把本来能用的自动探测也堵死。
+    """
+    from . import settings as SET                    # 放函数里，避免和 hook 绕成环
+    custom = SET.get("saves_dir")
+    if custom:
+        p = Path(custom).expanduser()
+        if p.is_dir():
+            return p
     try:
         from patcher import core as pcore
         d = pcore.saves_dir()

@@ -25,7 +25,6 @@ Tally 里直接 `era=3`，磁盘上可能整轮都没有 era=1。它插的是**�
 """
 from __future__ import annotations
 
-import json
 import os
 import re
 import shutil
@@ -33,6 +32,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+from . import settings as SET
 from . import state as S
 
 HERE = Path(__file__).resolve().parent
@@ -43,7 +43,7 @@ DATA_SUBDIRS = ("ObraDinn_Data", "Data")
 #: mac 的 .app 把数据藏在下面几层
 MAC_TAILS = ("Contents/Resources", "Resources", "Contents")
 
-SETTINGS_NAME = "hook.json"
+#: 设置文件名（`game_dir` / `saves_dir`）—— 存在用户数据目录，见 settings.py
 BACKUP_DIR = "hook-backup"
 BACKUP_NAME = DLL_NAME + ".before-hook"
 
@@ -128,25 +128,16 @@ def looks_like_game(p: Path) -> bool:
 
 
 def _settings_path() -> Path:
-    return S.data_dir() / SETTINGS_NAME
+    """设置文件（页面上的设置面板用同一份）。"""
+    return SET.path()
 
 
 def load_settings() -> dict:
-    try:
-        return json.loads(_settings_path().read_text("utf-8"))
-    except (OSError, ValueError):
-        return {}
+    return SET.load()
 
 
 def _save_settings(d: dict) -> None:
-    try:
-        p = _settings_path()
-        p.parent.mkdir(parents=True, exist_ok=True)
-        tmp = p.with_name(p.name + ".tmp")
-        tmp.write_text(json.dumps(d, indent=2, ensure_ascii=False), "utf-8")
-        os.replace(tmp, p)
-    except OSError:
-        pass
+    SET.save(d)
 
 
 def _steam_libraries(steam_root: Path) -> list[Path]:
@@ -240,6 +231,41 @@ def resolve_game(raw: str = "") -> tuple[Path | None, str]:
             return p, ""
     return None, ("自动找不到游戏目录 —— 用 `--game <游戏根目录>` 指定一次，之后会记住。\n"
                   "（Windows 是含 ObraDinn_Data 的那一层，mac 是 .app）")
+
+
+def autodetect() -> tuple[Path | None, str]:
+    """忘掉记住的路径，重新按「环境变量 / 常见安装位置」找一遍。"""
+    SET.update(game_dir=None)
+    return resolve_game("")
+
+
+def set_game_dir(raw: str) -> tuple[Path | None, str]:
+    """页面 / CLI 用：校验并记住游戏目录（和第一次「`--game <路径>`」等价）。"""
+    return resolve_game(raw)
+
+
+def forget_game_dir() -> None:
+    SET.update(game_dir=None)
+
+
+def summary() -> dict:
+    """游戏目录与钩子状态（存档目录由调用方自己拼）。"""
+    game, why = resolve_game("")
+    lang = find_langtool()
+    hook, dll = "未知（找不到游戏目录）", ""
+    if game is not None:
+        try:
+            dll_p, _ = dll_and_deps(game)
+            dll = str(dll_p)
+            hook = describe_state(dll_p, lang)
+        except OSError as e:                             # noqa: BLE001
+            hook = f"读不到 DLL：{e}"
+    return {"game_dir": str(game) if game else "",
+            "game_saved": SET.get("game_dir"),
+            "game_why": "" if game is not None else why,
+            "langtool": str(lang) if lang else "",
+            "hook": hook,
+            "dll": dll}
 
 
 def dll_and_deps(game: Path) -> tuple[Path, Path]:

@@ -31,6 +31,15 @@ def _alert(text: str) -> None:
             None, text, "奥伯拉丁 · 辅助提示", 0x10)
     except Exception:                                    # noqa: BLE001
         pass
+    try:                                                 # macOS：没有 MessageBox，用 osascript
+        import subprocess
+        if sys.platform == "darwin":
+            esc = text.replace("\\", "\\\\").replace('"', '\\"')
+            subprocess.run(["osascript", "-e",
+                            f'display alert "奥伯拉丁 · 辅助提示" message "{esc}"'],
+                           capture_output=True, timeout=30)
+    except Exception:                                    # noqa: BLE001
+        pass
 
 
 def main() -> int:
@@ -46,6 +55,20 @@ def main() -> int:
     try:
         from instructor.__main__ import CMDS, main as cli_main
         args = sys.argv[1:]
+
+        # 把游戏的 ObraDinn.exe（或游戏文件夹、mac 的 .app）拖到本程序图标上：
+        # 当作「--game」—— 记住目录 + 把书页钩子装上，然后弹窗告诉用户结果。
+        # （hook 会先把原 DLL 备份到 hook-backup/，随时可以用 --restore 还原）
+        if args and not args[0].startswith("-") and args[0] not in CMDS \
+                and Path(args[0]).exists():
+            import contextlib
+            import io
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf), contextlib.redirect_stderr(buf):
+                code = cli_main(["hook", "--game", args[0], *args[1:]])
+            _alert(buf.getvalue().strip() or "已完成（没有输出）")
+            return code
+
         # 不跟子命令就默认 run；跟了就照跟（这样 exe 也能跑 notify / check / replay）
         if not args or args[0] not in CMDS:
             args = ["run", *args]

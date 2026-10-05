@@ -8,6 +8,8 @@
                                                 这是写触发器时最有力的验证工具
     python -m instructor hook [--game <目录>]      装/查「书页浮现」钩子（让提醒提前到
                                                 书页出现的那一刻；--restore 还原）
+    python -m instructor config                  看/改记住的路径（游戏目录、存档目录）；
+                                                --game/--saves 设，--clear 全忘掉
 
   常用: --slot P2  --file <提示稿>  --saves <存档目录>
 """
@@ -41,7 +43,7 @@ PAGE_BYE_GRACE = 6.0
 
 # 子命令表（exe 入口 `run_instructor.py` 也用它判断「第一个参数是不是子命令」）
 CMDS = ("run", "page", "notify", "hints", "lint",
-        "facts", "check", "replay", "curve", "runs", "fonts", "hook", "state")
+        "facts", "check", "replay", "curve", "runs", "fonts", "hook", "config", "state")
 
 
 def hhmmss(sec: float) -> str:
@@ -394,6 +396,43 @@ def cmd_state(a) -> int:
     return 0
 
 
+def cmd_config(a) -> int:
+    """看 / 改记住的路径。页面右上角「设置」面板改的是同一份东西。
+
+        python -m instructor config                看现在是哪几个路径
+        python -m instructor config --game <目录>   手动指定游戏目录（填一次就记住）
+        python -m instructor config --saves <目录>  手动指定存档目录
+        python -m instructor config --clear        全部忘掉，回到自动探测
+    """
+    from . import hook as HK, settings as SET
+    if a.clear:
+        SET.save({})
+        print("已清空记住的路径")
+        return 0
+    if a.game:
+        p, why = HK.set_game_dir(a.game)
+        print(f"✔ 已记住游戏目录：{p}" if p else "✘ " + why)
+        if p is None:
+            return 1
+    if a.saves:
+        d = Path(a.saves).expanduser()
+        if not d.is_dir():
+            print(f"✘ 不是文件夹：{d}")
+            return 1
+        SET.update(saves_dir=str(d))
+        print(f"✔ 已记住存档目录：{d}")
+    rep = P.settings_report()
+    src = "（手动指定）" if rep.get("game_saved") else "（自动检测）"
+    print(f"游戏目录  {rep['game_dir'] or '（没找到）'}"
+          + (src if rep["game_dir"] else ""))
+    print(f"存档目录  {rep['saves_dir'] or rep['saves_effective'] or '（没找到）'}"
+          + ("（手动指定）" if rep["saves_dir"] else "（自动探测）"))
+    print(f"书页钩子  {rep['hook']}")
+    print(f"langtool  {rep['langtool'] or '（找不到）'}")
+    print(f"设置文件  {rep['settings_path']}")
+    return 0
+
+
 def cmd_hook(a) -> int:
     """装 / 查「书页浮现」钩子（让提醒提前到书页出现的那一刻）。"""
     from . import hook as HK
@@ -603,6 +642,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--report", action="store_true", help="fonts/hook: 只看状态")
     ap.add_argument("--game", default="", help="hook: 游戏根目录（填一次就会记住）")
     ap.add_argument("--restore", action="store_true", help="hook: 从备份还原 DLL")
+    ap.add_argument("--clear", action="store_true",
+                    help="config: 清空记住的路径，回到自动探测")
     ap.add_argument("--forget", nargs="+", default=[],
                     help="state: 把节点改回未解锁（测试触发时机用，可写多个）")
     ap.add_argument("-v", "--verbose", action="store_true", help="多打点日志")
@@ -616,7 +657,7 @@ def main(argv: list[str] | None = None) -> int:
             "check": cmd_check, "replay": cmd_replay, "curve": cmd_curve,
             "runs": cmd_runs, "run": cmd_run, "page": cmd_page,
             "notify": cmd_notify, "fonts": cmd_fonts, "hook": cmd_hook,
-            "state": cmd_state}[a.cmd](a)
+            "config": cmd_config, "state": cmd_state}[a.cmd](a)
 
 
 if __name__ == "__main__":
